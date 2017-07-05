@@ -80,7 +80,7 @@ function generate_test_targets() {
 
 
 
-source third_party/ros/setup.bash
+# source third_party/ros/setup.bash
 
 #=================================================
 #              Build functions
