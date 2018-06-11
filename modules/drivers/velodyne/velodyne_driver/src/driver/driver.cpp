@@ -20,7 +20,7 @@
 #include <ctime>
 #include <string>
 
-#include <ros/ros.h>
+#include "ros/ros.h"
 
 namespace apollo {
 namespace drivers {
@@ -65,8 +65,8 @@ bool VelodyneDriver::set_base_time() {
 }
 
 int VelodyneDriver::poll_standard(velodyne_msgs::VelodyneScanUnifiedPtr& scan) {
-  // Since the velodyne delivers data at a very high rate, keep
-  // reading and publishing scans as fast as possible.
+  // Since the velodyne delivers data at a very high rate, keep reading and
+  // publishing scans as fast as possible.
   scan->packets.resize(config_.npackets);
   for (int i = 0; i < config_.npackets; ++i) {
     while (true) {
@@ -75,14 +75,11 @@ int VelodyneDriver::poll_standard(velodyne_msgs::VelodyneScanUnifiedPtr& scan) {
 
       if (rc == 0) {
         break;  // got a full packet?
-      }
-
-      if (rc < 0) {
+      } else if (rc < 0) {
         return rc;
       }
     }
   }
-
   return 0;
 }
 
