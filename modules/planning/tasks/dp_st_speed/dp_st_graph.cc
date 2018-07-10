@@ -225,7 +225,7 @@ void DpStGraph::GetRowRange(const StGraphPoint& point, int* next_highest_row,
   const float delta_s_lower_bound = std::fmax(
       0.0, v0 * unit_t_ + vehicle_param_.max_deceleration() * speed_coeff);
   *next_lowest_row =
-      point.index_s() - static_cast<int>(delta_s_lower_bound / unit_s_);
+      point.index_s() + static_cast<int>(delta_s_lower_bound / unit_s_);
   if (*next_lowest_row > max_s_size) {
     *next_lowest_row = max_s_size;
   } else if (*next_lowest_row < 0) {
